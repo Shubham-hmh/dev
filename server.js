@@ -5,7 +5,14 @@ const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const app = express();
-app.use(cors());
+//app.use(cors());  
+app.use(cors({
+  origin: ['https://shubham-tech.onrender.com', 'http://localhost:5173'],
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+}));
+
+
 app.use(express.json());
 
 const { GMAIL_USER, GMAIL_PASS, RECEIVER_EMAIL } = process.env;
